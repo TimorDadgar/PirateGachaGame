@@ -18,10 +18,6 @@ DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 APirateGachaGameCharacter::APirateGachaGameCharacter()
 {
-	// Set size for collision capsule
-	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
-	int bulle = 11;
-
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
