@@ -69,5 +69,18 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
-};
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gold", meta = (ToolTip = "The amount of gold the player has collected"))
+	int PirateGold{100};
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gold", meta = (ToolTip = "The player has 0 gold"))
+	bool IsPoor{ false };
+
+	UFUNCTION(BlueprintCallable, Category = "Gold", meta = (ToolTip = "Reduce Gold"))
+	void LosePirateGold(int cost);
+
+
+	UFUNCTION(BlueprintCallable, Category = "Gold", meta = (ToolTip = "Reduce Gold"))
+	void AddPirateGold(int amountToAdd);
+
+};

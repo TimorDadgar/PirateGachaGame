@@ -48,6 +48,16 @@ void APirateGachaGameCharacter::BeginPlay()
 	}
 }
 
+void APirateGachaGameCharacter::LosePirateGold(int cost)
+{
+	PirateGold = PirateGold - cost;
+}
+
+void APirateGachaGameCharacter::AddPirateGold(int amountToAdd)
+{
+	PirateGold = PirateGold + amountToAdd;
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
