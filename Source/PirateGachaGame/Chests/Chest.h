@@ -15,6 +15,15 @@ public:
 	// Sets default values for this actor's properties
 	AChest();
 
+	UPROPERTY(BlueprintReadWrite, Category = "Eating")
+	bool IsOpening{ false };
+
+	UPROPERTY(BlueprintReadWrite, Category = "Eating")
+	bool IsClosing{ false };
+
+	UPROPERTY(BlueprintReadWrite, Category = "Eating")
+	bool IsReseting{ false };
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
