@@ -15,6 +15,18 @@ public:
 	// Sets default values for this actor's properties
 	AHector();
 
+	UPROPERTY(BlueprintReadWrite, Category = "Fish")
+	bool IsIdle{ false };
+
+	UPROPERTY(BlueprintReadWrite, Category = "Fish")
+	bool IsSlowFlopping{ false };
+
+	UPROPERTY(BlueprintReadWrite, Category = "Fish")
+	bool IsFlopping{ false };
+
+	UPROPERTY(BlueprintReadWrite, Category = "Fish")
+	bool IsHeckling{ false };
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
