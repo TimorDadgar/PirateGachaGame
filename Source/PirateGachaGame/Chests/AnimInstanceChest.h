@@ -28,5 +28,5 @@ private:
 	bool bIsClosing;
 
 	UPROPERTY(BlueprintReadOnly, Category = Chest, meta = (AllowPrivateAccess = "true"))
-	bool bIsReseting;
+	bool bIsHovering;
 };

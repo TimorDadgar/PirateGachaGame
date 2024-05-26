@@ -21,5 +21,5 @@ void UAnimInstanceChest::NativeUpdateAnimation(float DeltaSeconds)
 
 	bIsOpening = Chest->IsOpening;
 	bIsClosing = Chest->IsClosing;
-	bIsReseting = Chest->IsReseting;
+	bIsHovering = Chest->IsHovering;
 }

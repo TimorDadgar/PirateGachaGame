@@ -22,7 +22,7 @@ public:
 	bool IsClosing{ false };
 
 	UPROPERTY(BlueprintReadWrite, Category = "Eating")
-	bool IsReseting{ false };
+	bool IsHovering{ false };
 
 protected:
 	// Called when the game starts or when spawned
