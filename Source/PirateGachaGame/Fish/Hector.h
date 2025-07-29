@@ -56,6 +56,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	virtual bool Interact() override;
+	void Interact(UObject* Source) override;
 
 };

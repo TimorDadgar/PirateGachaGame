@@ -19,8 +19,9 @@ class UInteractableInterface : public UInterface
 class PIRATEGACHAGAME_API IInteractableInterface
 {
 	GENERATED_BODY()
-
-	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
+protected:
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Interact"))
+	void RecieveInteract(UObject* Source);
 public:
-	virtual bool Interact() = 0;
+	virtual void Interact(UObject* Source);
 };
