@@ -47,7 +47,7 @@ class APirateGachaGameCharacter : public ACharacter, public IRequestPayInterface
 
 public:
 	APirateGachaGameCharacter();
-	bool RequestPay(UObject* Source, int Amount) override;
+	bool RequestPay_Implementation(UObject* Source, int Amount) override;
 
 protected:
 

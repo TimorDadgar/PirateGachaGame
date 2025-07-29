@@ -3,7 +3,3 @@
 
 #include "RequestPayInterface.h"
 
-bool IRequestPayInterface::RequestPay(UObject* Source, int Amount)
-{
-	return RecieveRequestPay(Source, Amount);
-}

@@ -25,8 +25,7 @@ void AChest::Tick(float DeltaTime)
 
 }
 
-void AChest::Interact(UObject* Source)
+void AChest::Interact_Implementation(UObject* Source)
 {
-	IInteractableInterface::Interact(Source);
+	UE_LOG(LogTemp, Warning, TEXT("Derived Interact class implementation called"));
 }
-

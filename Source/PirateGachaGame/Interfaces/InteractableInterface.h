@@ -20,8 +20,6 @@ class PIRATEGACHAGAME_API IInteractableInterface
 {
 	GENERATED_BODY()
 protected:
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Interact"))
-	void RecieveInteract(UObject* Source);
-public:
-	virtual void Interact(UObject* Source);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, meta = (DisplayName = "Interact"))
+	void Interact(UObject* Source);
 };

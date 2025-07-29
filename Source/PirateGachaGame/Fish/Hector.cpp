@@ -33,8 +33,3 @@ void AHector::Tick(float DeltaTime)
 
 }
 
-void AHector::Interact(UObject* Source)
-{
-	IInteractableInterface::Interact(Source);
-}
-

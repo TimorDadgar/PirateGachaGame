@@ -23,8 +23,6 @@ class PIRATEGACHAGAME_API IRequestPayInterface
 {
 	GENERATED_BODY()
 protected:
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "RequestPay"))
-	bool RecieveRequestPay(UObject* Source, int Amount);
-public:
-	virtual bool RequestPay(UObject* Source, int Amount);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, meta = (DisplayName = "RequestPay"))
+	bool RequestPay(UObject* Source, int Amount);
 };
