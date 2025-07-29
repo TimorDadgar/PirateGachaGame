@@ -18,8 +18,4 @@ void UAnimInstanceChest::NativeUpdateAnimation(float DeltaSeconds)
 		Chest = Cast<AChest>(GetOwningActor());
 	}
 	if (Chest == nullptr) return;
-
-	bIsOpening = Chest->IsOpening;
-	bIsClosing = Chest->IsClosing;
-	bIsHovering = Chest->IsHovering;
 }
