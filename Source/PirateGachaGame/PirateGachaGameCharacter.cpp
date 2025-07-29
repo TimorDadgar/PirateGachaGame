@@ -33,6 +33,11 @@ APirateGachaGameCharacter::APirateGachaGameCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
+bool APirateGachaGameCharacter::RequestPay(UObject* Source, int Amount)
+{
+	return IRequestPayInterface::RequestPay(Source, Amount);
+}
+
 void APirateGachaGameCharacter::BeginPlay()
 {
 	// Call the base class  

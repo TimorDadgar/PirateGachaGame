@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "../Interfaces/RequestPayInterface.h"
 #include "PirateGachaGameCharacter.generated.h"
 
 class USpringArmComponent;
@@ -16,7 +17,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
-class APirateGachaGameCharacter : public ACharacter
+class APirateGachaGameCharacter : public ACharacter, public IRequestPayInterface
 {
 	GENERATED_BODY()
 
@@ -46,7 +47,7 @@ class APirateGachaGameCharacter : public ACharacter
 
 public:
 	APirateGachaGameCharacter();
-	
+	bool RequestPay(UObject* Source, int Amount) override;
 
 protected:
 
