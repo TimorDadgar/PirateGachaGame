@@ -9,5 +9,8 @@ public class PirateGachaGame : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
+		PrivateIncludePaths.AddRange(new string[] {
+			"PirateGachaGame/Interfaces"
+		});
 	}
 }
