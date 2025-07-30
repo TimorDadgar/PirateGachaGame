@@ -19,20 +19,33 @@ AHector::AHector()
 	HatMeshComponent->SetupAttachment(SkeletalMeshComponent);
 }
 
-// Called when the game starts or when spawned
 void AHector::BeginPlay()
 {
 	Super::BeginPlay();
+	CurrentState = NewObject<UHectorStateIdle>(this);
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Hector Begin Play"));
+	HandleStateInput(UHectorState::Idle);
 }
 
-// Called every frame
 void AHector::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 void AHector::Interact_Implementation(UObject* Source)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hector Interacted!"));
+}
+
+void AHector::HandleStateInput(UHectorState::EHectorStates Input) 
+{
+	if (CurrentState)
+	{
+		UHectorState* NewState = CurrentState->HandleInput(this, Input);
+		if (NewState)
+		{
+			CurrentState = NewState;
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("CurrentState Changed!"));
+		}
+	}
 }
