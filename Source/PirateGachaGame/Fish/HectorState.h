@@ -28,7 +28,7 @@ public:
 		Heckling
 	};
 
-	UHectorState* HandleInput(AHector* Hector, EHectorStates Input);
+	virtual UHectorState* HandleInput(AHector* Hector, EHectorStates Input);
 
 private:
 };

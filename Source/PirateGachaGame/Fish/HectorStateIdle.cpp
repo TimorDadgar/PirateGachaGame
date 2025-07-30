@@ -8,8 +8,9 @@ UHectorState* UHectorStateIdle::HandleInput(AHector* Hector, EHectorStates EInpu
 {
     if (EInput == EHectorStates::SlowFlopping)
     {
+        GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Transitioning to Slow Flopping State"));
         return NewObject<UHectorStateSlowFlopping>(this);
     }
-
-    return nullptr;
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Idle HandleInput!"));
+    return NewObject<UHectorStateIdle>(this);
 }

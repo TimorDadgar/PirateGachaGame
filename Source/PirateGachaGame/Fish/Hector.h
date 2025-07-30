@@ -7,6 +7,8 @@
 #include "Components/ArrowComponent.h"
 #include "InteractableInterface.h"
 #include "HectorState.h"
+#include "HectorStateIdle.h"
+#include "HectorStateSlowFlopping.h"
 #include "Hector.generated.h"
 
 UCLASS()
@@ -26,17 +28,7 @@ public:
 		Heckling
 	};
 
-	void HandleStateInput(UHectorState::EHectorStates Input)
-	{
-		if (CurrentState)
-		{
-			UHectorState* NewState = CurrentState->HandleInput(this, Input);
-			if (NewState)
-			{
-				CurrentState = NewState;
-			}
-		}
-	}
+	void HandleStateInput(UHectorState::EHectorStates Input);
 
 public:	
 	AHector();
