@@ -13,9 +13,6 @@
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
-//////////////////////////////////////////////////////////////////////////
-// APirateGachaGameCharacter
-
 APirateGachaGameCharacter::APirateGachaGameCharacter()
 {
 	// Create a camera boom (pulls in towards the player if there is a collision)
@@ -31,12 +28,6 @@ APirateGachaGameCharacter::APirateGachaGameCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
-}
-
-bool APirateGachaGameCharacter::RequestPay_Implementation(UObject* Source, int Amount)
-{
-	UE_LOG(LogTemp, Warning, TEXT("Derived RequestPay class implementation called"));
-	return true;
 }
 
 void APirateGachaGameCharacter::BeginPlay()
@@ -63,63 +54,3 @@ void APirateGachaGameCharacter::AddPirateGold(int amountToAdd)
 {
 	PirateGold = PirateGold + amountToAdd;
 }
-
-//////////////////////////////////////////////////////////////////////////
-// Input
-
-void APirateGachaGameCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	// Set up action bindings
-	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
-		
-		// Jumping
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-
-		//// Moving
-		//EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &APirateGachaGameCharacter::Move);
-
-		//// Looking
-		//EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &APirateGachaGameCharacter::Look);
-	}
-	else
-	{
-		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
-	}
-}
-//
-//void APirateGachaGameCharacter::Move(const FInputActionValue& Value)
-//{
-//	// input is a Vector2D
-//	FVector2D MovementVector = Value.Get<FVector2D>();
-//
-//	if (Controller != nullptr)
-//	{
-//		// find out which way is forward
-//		const FRotator Rotation = Controller->GetControlRotation();
-//		const FRotator YawRotation(0, Rotation.Yaw, 0);
-//
-//		// get forward vector
-//		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-//	
-//		// get right vector 
-//		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-//
-//		// add movement 
-//		AddMovementInput(ForwardDirection, MovementVector.Y);
-//		AddMovementInput(RightDirection, MovementVector.X);
-//	}
-//}
-
-//void APirateGachaGameCharacter::Look(const FInputActionValue& Value)
-//{
-//	// input is a Vector2D
-//	FVector2D LookAxisVector = Value.Get<FVector2D>();
-//
-//	if (Controller != nullptr)
-//	{
-//		// add yaw and pitch input to controller
-//		AddControllerYawInput(LookAxisVector.X);
-//		AddControllerPitchInput(LookAxisVector.Y);
-//	}
-//}
