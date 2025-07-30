@@ -5,10 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "../Interfaces/InteractableInterface.h"
+#include "../Interfaces/HoverableInterface.h"
 #include "Chest.generated.h"
 
 UCLASS()
-class PIRATEGACHAGAME_API AChest : public AActor, public IInteractableInterface
+class PIRATEGACHAGAME_API AChest : public AActor, public IInteractableInterface, public IHoverableInterface
 {
 	GENERATED_BODY()
 	
