@@ -2,7 +2,7 @@
 
 
 #include "AnimInstanceChest.h"
-#include "PirateGachaGame/Chests/Chest.h"
+#include "Chest.h"
 
 
 void UAnimInstanceChest::NativeInitializeAnimation()

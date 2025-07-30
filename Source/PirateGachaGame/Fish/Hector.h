@@ -5,7 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/ArrowComponent.h"
-#include "../Interfaces/InteractableInterface.h"
+#include "InteractableInterface.h"
+#include "HectorState.h"
 #include "Hector.generated.h"
 
 UCLASS()
@@ -14,6 +15,9 @@ class PIRATEGACHAGAME_API AHector : public AActor, public IInteractableInterface
 	GENERATED_BODY()
 
 public:
+
+	class UHectorState* CurrentState;
+
 	enum HectorStates
 	{
 		Idle,
@@ -22,8 +26,19 @@ public:
 		Heckling
 	};
 
+	void HandleStateInput(UHectorState::EHectorStates Input)
+	{
+		if (CurrentState)
+		{
+			UHectorState* NewState = CurrentState->HandleInput(this, Input);
+			if (NewState)
+			{
+				CurrentState = NewState;
+			}
+		}
+	}
+
 public:	
-	// Sets default values for this actor's properties
 	AHector();
 
 	UPROPERTY(BlueprintReadWrite, Category = "Fish")
@@ -41,6 +56,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	void Interact_Implementation(UObject* Source);
 
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Hector Components")
@@ -53,7 +69,6 @@ public:
 	USkeletalMeshComponent* SkeletalMeshComponent;
 
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 };

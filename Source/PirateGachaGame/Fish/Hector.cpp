@@ -23,7 +23,6 @@ AHector::AHector()
 void AHector::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -33,3 +32,7 @@ void AHector::Tick(float DeltaTime)
 
 }
 
+void AHector::Interact_Implementation(UObject* Source)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hector Interacted!"));
+}
