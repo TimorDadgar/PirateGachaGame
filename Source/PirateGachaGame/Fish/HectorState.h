@@ -6,8 +6,9 @@
 #include "UObject/NoExportTypes.h"
 #include "HectorState.generated.h"
 
-
 class AHector;
+struct FStateInput;
+
 /**
  * 
  */
@@ -20,15 +21,7 @@ public:
 	UHectorState();
 	~UHectorState();
 
-	enum EHectorStates
-	{
-		Idle,
-		SlowFlopping,
-		Flopping,
-		Heckling
-	};
-
-	virtual UHectorState* HandleInput(AHector* Hector, EHectorStates Input);
+	virtual UHectorState* HandleInput(const FStateInput& Input);
 
 private:
 };

@@ -24,7 +24,10 @@ void AHector::BeginPlay()
 	Super::BeginPlay();
 	CurrentState = NewObject<UHectorStateIdle>(this);
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Hector Begin Play"));
-	HandleStateInput(UHectorState::Idle);
+
+	int32 testInput = 0; // Example input, replace with actual input handling logic
+	const FStateInput& Input = FStateInput(this, testInput);
+	HandleStateInput(Input);
 }
 
 void AHector::Tick(float DeltaTime)
@@ -37,11 +40,11 @@ void AHector::Interact_Implementation(UObject* Source)
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hector Interacted!"));
 }
 
-void AHector::HandleStateInput(UHectorState::EHectorStates Input) 
+void AHector::HandleStateInput(const FStateInput& Input)
 {
 	if (CurrentState)
 	{
-		UHectorState* NewState = CurrentState->HandleInput(this, Input);
+		UHectorState* NewState = CurrentState->HandleInput(Input);
 		if (NewState)
 		{
 			CurrentState = NewState;

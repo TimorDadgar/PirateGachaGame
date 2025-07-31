@@ -4,17 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "HectorState.h"
-#include "HectorStateSlowFlopping.generated.h"
-
+#include "HectorStateFlopping.generated.h"
 /**
  * 
  */
 UCLASS()
-class PIRATEGACHAGAME_API UHectorStateSlowFlopping : public UHectorState
+class PIRATEGACHAGAME_API UHectorStateFlopping : public UHectorState
 {
 	GENERATED_BODY()
 
 public:
-	float floppingTime{ 0.0f };
 	UHectorState* HandleInput(const FStateInput& Input) override;
 };

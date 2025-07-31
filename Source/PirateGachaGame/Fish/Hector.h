@@ -12,6 +12,24 @@
 #include "HectorStateSlowFlopping.h"
 #include "Hector.generated.h"
 
+USTRUCT(BlueprintType)
+struct FStateInput
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	AHector* Hector;
+
+	UPROPERTY()
+	int32 Input;
+
+	FStateInput() {}
+
+	FStateInput(AHector* InHector, int32 InInput)
+		: Hector(InHector), Input(InInput) {
+	}
+};
+
 UCLASS()
 class PIRATEGACHAGAME_API AHector : public AActor, public IInteractableInterface, public IReactionInterface
 {
@@ -29,7 +47,8 @@ public:
 		Heckling
 	};
 
-	void HandleStateInput(UHectorState::EHectorStates Input);
+	UFUNCTION(BlueprintCallable, Category = "HectorState")
+	void HandleStateInput(const FStateInput& Input);
 
 public:	
 	AHector();

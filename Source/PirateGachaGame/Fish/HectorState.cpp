@@ -12,7 +12,7 @@ UHectorState::~UHectorState()
 {
 }
 
-UHectorState* UHectorState::HandleInput(AHector* Hector, EHectorStates Input)
+UHectorState* UHectorState::HandleInput(const FStateInput& Input)
 {
 	return nullptr;
 }
