@@ -6,13 +6,14 @@
 #include "GameFramework/Actor.h"
 #include "Components/ArrowComponent.h"
 #include "InteractableInterface.h"
+#include "ReactionInterface.h"
 #include "HectorState.h"
 #include "HectorStateIdle.h"
 #include "HectorStateSlowFlopping.h"
 #include "Hector.generated.h"
 
 UCLASS()
-class PIRATEGACHAGAME_API AHector : public AActor, public IInteractableInterface
+class PIRATEGACHAGAME_API AHector : public AActor, public IInteractableInterface, public IReactionInterface
 {
 	GENERATED_BODY()
 
