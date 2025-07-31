@@ -3,10 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "F_TreasureContext.generated.h"
 
 USTRUCT(BlueprintType) // This allows the struct to be used in Blueprints
-struct FTreasureContext
+struct FTreasureContext: public FTableRowBase
 {
     GENERATED_BODY() // This macro is required for all USTRUCTs
 

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include <PirateGachaGame/Treasure/F_TreasureContext.h>
 #include "F_ChestContext.generated.h"
 
 USTRUCT(BlueprintType) // This allows the struct to be used in Blueprints
@@ -11,20 +12,17 @@ struct FChestContext
     GENERATED_BODY() // This macro is required for all USTRUCTs
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chest Context") // Expose to editor and Blueprints
-    int32 MyInt;
+    float LuckChance;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chest Context")
-    float MyFloat;
+    int32 Cost;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chest Context")
-    FString MyString;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "My Struct")
-    TArray<int32> MyIntArray; // Array of integers
+    TArray<FTreasureContext> Treasure; // Array of integers
 
     // Constructor
     FChestContext()
-        : MyInt(0), MyFloat(0.0f), MyString(TEXT("")), MyIntArray()
+        : LuckChance(0.0f), Cost(0), Treasure()
     {
     }
 };
