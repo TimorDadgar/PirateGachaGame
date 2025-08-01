@@ -10,6 +10,9 @@
 #include "HectorState.h"
 #include "HectorStateIdle.h"
 #include "HectorStateSlowFlopping.h"
+#include "HectorStateFlopping.h"
+#include "HectorStateHeckling.h"
+#include "AnimInstanceHector.h"
 #include "Hector.generated.h"
 
 USTRUCT(BlueprintType)
@@ -23,10 +26,13 @@ struct FStateInput
 	UPROPERTY()
 	int32 Input;
 
+	UPROPERTY()
+	UAnimInstanceHector* AnimInstance;
+
 	FStateInput() {}
 
-	FStateInput(AHector* InHector, int32 InInput)
-		: Hector(InHector), Input(InInput) {
+	FStateInput(AHector* InHector, int32 InInput, UAnimInstanceHector* InAnimInstance)
+		: Hector(InHector), Input(InInput), AnimInstance(InAnimInstance){
 	}
 };
 
@@ -39,31 +45,23 @@ public:
 
 	class UHectorState* CurrentState;
 
-	enum HectorStates
-	{
-		Idle,
-		SlowFlopping,
-		Flopping,
-		Heckling
-	};
-
 	UFUNCTION(BlueprintCallable, Category = "HectorState")
 	void HandleStateInput(const FStateInput& Input);
 
 public:	
 	AHector();
 
-	UPROPERTY(BlueprintReadWrite, Category = "Fish")
-	bool IsIdle{ false };
+	//UPROPERTY(BlueprintReadWrite, Category = "Fish")
+	//bool IsIdle{ false };
 
-	UPROPERTY(BlueprintReadWrite, Category = "Fish")
-	bool IsSlowFlopping{ false };
+	//UPROPERTY(BlueprintReadWrite, Category = "Fish")
+	//bool IsSlowFlopping{ false };
 
-	UPROPERTY(BlueprintReadWrite, Category = "Fish")
-	bool IsFlopping{ false };
+	//UPROPERTY(BlueprintReadWrite, Category = "Fish")
+	//bool IsFlopping{ false };
 
-	UPROPERTY(BlueprintReadWrite, Category = "Fish")
-	bool IsHeckling{ false };
+	//UPROPERTY(BlueprintReadWrite, Category = "Fish")
+	//bool IsHeckling{ false };
 
 protected:
 	// Called when the game starts or when spawned

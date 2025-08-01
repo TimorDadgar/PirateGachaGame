@@ -6,5 +6,6 @@
 
 UHectorState* UHectorStateSlowFlopping::HandleInput(const FStateInput& Input)
 {
+
 	return nullptr;
 }

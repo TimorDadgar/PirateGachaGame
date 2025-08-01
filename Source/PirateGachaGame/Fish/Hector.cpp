@@ -25,8 +25,9 @@ void AHector::BeginPlay()
 	CurrentState = NewObject<UHectorStateIdle>(this);
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Hector Begin Play"));
 
+	UAnimInstanceHector* HectorAnimInstance = Cast<UAnimInstanceHector>(SkeletalMeshComponent->GetAnimInstance());
 	int32 testInput = 0; // Example input, replace with actual input handling logic
-	const FStateInput& Input = FStateInput(this, testInput);
+	const FStateInput& Input = FStateInput(this, testInput, HectorAnimInstance);
 	HandleStateInput(Input);
 }
 
