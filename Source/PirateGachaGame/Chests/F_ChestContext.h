@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include <PirateGachaGame/Treasure/F_TreasureContext.h>
+#include <PirateGachaGame/Treasure.h>
 #include "F_ChestContext.generated.h"
 
 USTRUCT(BlueprintType) // This allows the struct to be used in Blueprints
@@ -18,7 +18,7 @@ struct FChestContext
     int32 Cost;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chest Context")
-    TArray<FTreasureContext> Treasure; // Array of integers
+    TArray<ATreasure*> Treasure; // Array of integers
 
     // Constructor
     FChestContext()
