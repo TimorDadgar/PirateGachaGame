@@ -11,18 +11,18 @@ struct FChestContext
 {
     GENERATED_BODY() // This macro is required for all USTRUCTs
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chest Context") // Expose to editor and Blueprints
-    float LuckChance;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite) // Expose to editor and Blueprints
+    float Chance;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chest Context")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
     int32 Cost;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chest Context")
-    TArray<ATreasure*> Treasure; // Array of integers
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TArray<ATreasure*> Prizes; // Array of integers
 
     // Constructor
     FChestContext()
-        : LuckChance(0.0f), Cost(0), Treasure()
+        : Chance(0.0f), Cost(0), Prizes()
     {
     }
 };
