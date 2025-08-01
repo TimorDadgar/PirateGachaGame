@@ -10,14 +10,16 @@
  * 
  */
 USTRUCT(BlueprintType) 
-struct FLootContext: public FTableRowBase
+struct F_LootContext: public FTableRowBase
 {
     GENERATED_BODY()
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    TSubclassOf<ALoot> Loot;
-        FLootContext()
-        : Loot()
-    {
-    }
+    FText Name;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 Value;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TSubclassOf<ALoot> Blueprint;
 };
