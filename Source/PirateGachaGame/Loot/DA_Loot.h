@@ -17,5 +17,5 @@ class PIRATEGACHAGAME_API UDA_Loot : public UDataAsset
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	TArray<F_LootContext> InventoryItems;
+	TArray<F_LootContext> LootArray;
 };

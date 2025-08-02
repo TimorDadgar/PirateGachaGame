@@ -20,8 +20,11 @@ struct F_LootBoxContext: public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText Name;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Chance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (Tooltip = "Cost to open"))
+	int32 Cost;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (Tooltip = "Chance to contain loot when opened, a number between 0-100%"))
+	double Chance;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UDA_Loot* LootDataAsset;
