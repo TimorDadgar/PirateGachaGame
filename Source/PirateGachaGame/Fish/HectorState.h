@@ -4,14 +4,22 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+#include "AnimInstanceHector.h" 
+#include "F_StateInput.h"
 #include "HectorState.generated.h"
 
 class AHector;
-struct FStateInput;
+struct FStateInputFish;
 
-/**
- * 
- */
+UENUM(BlueprintType)
+enum class EHectorState : uint8
+{
+	Idle,
+	Flopping,
+	SlowFlopping,
+	Heckling
+};
+
 UCLASS(Blueprintable)
 class PIRATEGACHAGAME_API UHectorState: public UObject
 {
@@ -21,7 +29,11 @@ public:
 	UHectorState();
 	~UHectorState();
 
-	virtual UHectorState* HandleInput(const FStateInput& Input);
+	virtual UHectorState* HandleInput(const FStateInputFish& Input);
+	virtual UHectorState* Update(float DeltaTime) { return nullptr; }
+	UFUNCTION()
+	void OnAnimationEndedFunc(UAnimMontage* Montage, bool bInterrupted);
 
 private:
+	FStateInputFish CurrentInput;
 };

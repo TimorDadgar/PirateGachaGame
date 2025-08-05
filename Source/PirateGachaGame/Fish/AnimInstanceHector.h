@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimNodeReference.h"
-#include "HectorState.h"
 #include "AnimInstanceHector.generated.h"
 
 /**
@@ -24,12 +23,27 @@ class PIRATEGACHAGAME_API UAnimInstanceHector : public UAnimInstance
 
 public:
 	FOnEnterIdleState OnEnterIdleState;
+	FOnEnterFloppingState OnEnterFloppingState;
+	FOnEnterFloppingState OnEnterSlowFloppingState;
+	FOnEnterHecklingState OnEnterHecklingState;
 
 	UFUNCTION()
 	void OnEnterIdleStateFunc(bool bIsIdle);
+	UFUNCTION()
+	void OnEnterFloppingStateFunc(bool bIsFlopping);
+	UFUNCTION()
+	void OnEnterSlowFloppingStateFunc(bool bIsSlowFlopping);
+	UFUNCTION()
+	void OnEnterHecklingStateFunc(bool bIsHeckling);
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Fish")
 	UAnimMontage* IdleMontage;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Fish")
+	UAnimMontage* FloppingMontage;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Fish")
+	UAnimMontage* SlowFloppingMontage;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Fish")
+	UAnimMontage* HecklingMontage;
 
 	virtual void NativeInitializeAnimation() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds);
@@ -37,20 +51,4 @@ public:
 	UFUNCTION()
 	void HandleMontageEnded(UAnimMontage* Montage, bool bInterrupted);
 
-private:
-	//UPROPERTY(BlueprintReadOnly, Category = Fish, meta = (AllowPrivateAccess = "true"))
-	//class AHector* Hector;
-
-	UPROPERTY(BlueprintReadOnly, Category = Fish, meta = (AllowPrivateAccess = "true"))
-	bool bIsIdle;
-
-	UPROPERTY(BlueprintReadOnly, Category = Fish, meta = (AllowPrivateAccess = "true"))
-	bool bIsSlowFlopping;
-
-	UPROPERTY(BlueprintReadOnly, Category = Fish, meta = (AllowPrivateAccess = "true"))
-	bool bIsFlopping;
-
-	UPROPERTY(BlueprintReadOnly, Category = Fish, meta = (AllowPrivateAccess = "true"))
-	bool bIsHeckling;
-	
 };

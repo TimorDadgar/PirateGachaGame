@@ -17,6 +17,8 @@ AHector::AHector()
 	HatMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 	HatMeshComponent->bHiddenInGame = true;
 	HatMeshComponent->SetupAttachment(SkeletalMeshComponent);
+
+	OnStateChangeFish.AddDynamic(this, &AHector::HandleStateChange);
 }
 
 void AHector::BeginPlay()
@@ -24,10 +26,11 @@ void AHector::BeginPlay()
 	Super::BeginPlay();
 	CurrentState = NewObject<UHectorStateIdle>(this);
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Hector Begin Play"));
-
+	
+	// Setting up state machine
 	UAnimInstanceHector* HectorAnimInstance = Cast<UAnimInstanceHector>(SkeletalMeshComponent->GetAnimInstance());
-	int32 testInput = 0; // Example input, replace with actual input handling logic
-	const FStateInput& Input = FStateInput(this, testInput, HectorAnimInstance);
+	int32 testInput = 0;
+	const FStateInputFish& Input = FStateInputFish(this, testInput, HectorAnimInstance);
 	HandleStateInput(Input);
 }
 
@@ -41,7 +44,7 @@ void AHector::Interact_Implementation(UObject* Source)
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Hector Interacted!"));
 }
 
-void AHector::HandleStateInput(const FStateInput& Input)
+void AHector::HandleStateInput(const FStateInputFish& Input)
 {
 	if (CurrentState)
 	{
@@ -52,4 +55,10 @@ void AHector::HandleStateInput(const FStateInput& Input)
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("CurrentState Changed!"));
 		}
 	}
+}
+
+void AHector::HandleStateChange(UHectorState* StateChange) 
+{
+	CurrentState = StateChange;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("State Change Handled!"));
 }

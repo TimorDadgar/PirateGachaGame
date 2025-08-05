@@ -14,5 +14,5 @@ class PIRATEGACHAGAME_API UHectorStateFlopping : public UHectorState
 	GENERATED_BODY()
 
 public:
-	UHectorState* HandleInput(const FStateInput& Input) override;
+	UHectorState* HandleInput(const FStateInputFish& Input) override;
 };

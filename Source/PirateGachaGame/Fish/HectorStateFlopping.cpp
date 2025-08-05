@@ -3,7 +3,8 @@
 #include "HectorStateFlopping.h"
 #include "Hector.h"
 
-UHectorState* UHectorStateFlopping::HandleInput(const FStateInput& Input)
+UHectorState* UHectorStateFlopping::HandleInput(const FStateInputFish& Input)
 {
+	Super::HandleInput(Input);
 	return nullptr;
 }

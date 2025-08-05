@@ -16,5 +16,5 @@ class PIRATEGACHAGAME_API UHectorStateSlowFlopping : public UHectorState
 
 public:
 	float floppingTime{ 0.0f };
-	UHectorState* HandleInput(const FStateInput& Input) override;
+	UHectorState* HandleInput(const FStateInputFish& Input) override;
 };

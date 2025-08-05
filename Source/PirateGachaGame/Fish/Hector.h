@@ -13,28 +13,12 @@
 #include "HectorStateFlopping.h"
 #include "HectorStateHeckling.h"
 #include "AnimInstanceHector.h"
+#include "F_StateInput.h"
 #include "Hector.generated.h"
 
-USTRUCT(BlueprintType)
-struct FStateInput
-{
-	GENERATED_BODY()
+struct FStateInputFish;
 
-	UPROPERTY()
-	AHector* Hector;
-
-	UPROPERTY()
-	int32 Input;
-
-	UPROPERTY()
-	UAnimInstanceHector* AnimInstance;
-
-	FStateInput() {}
-
-	FStateInput(AHector* InHector, int32 InInput, UAnimInstanceHector* InAnimInstance)
-		: Hector(InHector), Input(InInput), AnimInstance(InAnimInstance){
-	}
-};
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStateChangeFish, UHectorState*, uFishState);
 
 UCLASS()
 class PIRATEGACHAGAME_API AHector : public AActor, public IInteractableInterface, public IReactionInterface
@@ -44,9 +28,12 @@ class PIRATEGACHAGAME_API AHector : public AActor, public IInteractableInterface
 public:
 
 	class UHectorState* CurrentState;
+	FOnStateChangeFish OnStateChangeFish;
 
 	UFUNCTION(BlueprintCallable, Category = "HectorState")
-	void HandleStateInput(const FStateInput& Input);
+	void HandleStateInput(const FStateInputFish& Input);
+	UFUNCTION()
+	void HandleStateChange(UHectorState* StateChange);
 
 public:	
 	AHector();

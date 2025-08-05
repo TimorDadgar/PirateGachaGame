@@ -5,14 +5,14 @@
 #include "HectorStateSlowFlopping.h"
 #include "AnimInstanceHector.h"
 
-UHectorState* UHectorStateIdle::HandleInput(const FStateInput& Input)
+UHectorState* UHectorStateIdle::HandleInput(const FStateInputFish& Input)
 {
+	Super::HandleInput(Input);
     if (Input.Input == 0)
     {
         GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Transitioning to Idle State"));
         
 		Input.AnimInstance->OnEnterIdleState.Broadcast(true);
-        //Cast<UAnimInstanceHector>(Input.Hector->SkeletalMeshComponent->GetAnimInstance())->OnEnterIdleState.Broadcast(true);
         return NewObject<UHectorStateIdle>(this);
 
 	}

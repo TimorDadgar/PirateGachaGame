@@ -4,8 +4,8 @@
 #include "HectorStateSlowFlopping.h"
 #include "Hector.h"
 
-UHectorState* UHectorStateSlowFlopping::HandleInput(const FStateInput& Input)
+UHectorState* UHectorStateSlowFlopping::HandleInput(const FStateInputFish& Input)
 {
-
+	Super::HandleInput(Input);
 	return nullptr;
 }

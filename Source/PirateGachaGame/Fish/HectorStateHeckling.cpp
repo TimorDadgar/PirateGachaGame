@@ -4,7 +4,8 @@
 #include "HectorStateHeckling.h"
 #include "Hector.h"
 
-UHectorState* UHectorStateHeckling::HandleInput(const FStateInput& Input)
+UHectorState* UHectorStateHeckling::HandleInput(const FStateInputFish& Input)
 {
+	Super::HandleInput(Input);
 	return nullptr;
 }

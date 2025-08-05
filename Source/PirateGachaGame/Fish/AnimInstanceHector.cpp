@@ -11,11 +11,31 @@ void UAnimInstanceHector::OnEnterIdleStateFunc(bool IsIdle)
 	this->Montage_Play(IdleMontage);
 }
 
+void UAnimInstanceHector::OnEnterFloppingStateFunc(bool IsFlopping)
+{
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("OnEnterFloppingStateFunc"));
+    this->Montage_Play(FloppingMontage);
+}
+
+void UAnimInstanceHector::OnEnterSlowFloppingStateFunc(bool IsSlowFlopping)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("OnEnterFloppingStateFunc"));
+	this->Montage_Play(SlowFloppingMontage);
+}
+
+void UAnimInstanceHector::OnEnterHecklingStateFunc(bool IsHeckling)
+{
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("OnEnterHecklingStateFunc"));
+    this->Montage_Play(HecklingMontage);
+}
+
 void UAnimInstanceHector::NativeInitializeAnimation()
 {
 	Super::NativeInitializeAnimation();
 	OnEnterIdleState.AddDynamic(this, &ThisClass::OnEnterIdleStateFunc);
-	OnMontageEnded.AddDynamic(this, &UAnimInstanceHector::HandleMontageEnded);
+	OnEnterFloppingState.AddDynamic(this, &ThisClass::OnEnterFloppingStateFunc);
+	OnEnterHecklingState.AddDynamic(this, &ThisClass::OnEnterHecklingStateFunc);
+	OnMontageEnded.AddDynamic(this, &ThisClass::HandleMontageEnded);
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("AnimInstance Initialized and delegate bound"));
 }
 
@@ -24,16 +44,5 @@ void UAnimInstanceHector::NativeUpdateAnimation(float DeltaSeconds)
 }
 void UAnimInstanceHector::HandleMontageEnded(UAnimMontage* Montage, bool bInterrupted)
 {
-    if (Montage == IdleMontage)
-    {
-        if (!bInterrupted)
-        {
-            GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Montage done"));
-            Montage_JumpToSection(FName("IdleLoop"), IdleMontage);
-        }
-        else
-        {
-            GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Not done yet"));
-        }
-    }
+	//OnAnimationEnded.Broadcast(bInterrupted);
 }
